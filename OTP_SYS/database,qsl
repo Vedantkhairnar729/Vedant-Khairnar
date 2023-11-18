@@ -1,0 +1,18 @@
+ DATABASE name : otp_verification_db
+
+
+
+
+CREATE DATABASE IF NOT EXISTS otp_verification_db;
+
+USE otp_verification_db;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    otp INT NOT NULL,
+    is_verified TINYINT(1) DEFAULT 0,
+    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_otp ON users (otp);
